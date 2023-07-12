@@ -1,7 +1,19 @@
 // login
 
 const getMoviesFromApi = () => {
+
+  app.get('/movies', async (req, res) => {
+  console.log('Pidiendo a la base de datos información de los empleados.');
+
+  const connection = await getConnection();
+  const [results, fields] = await connection.query(sql);
+  res.json(results);
+  connection.end();
+});
+}
+
   console.log('Se están pidiendo las películas de la app');
+  /*
   // CAMBIA ESTE FETCH PARA QUE APUNTE A UN ENDPOINT DE TU SERVIDOR, PIENSA SI DEBE SER GET O POST, PIENSA QUÉ DATOS DEBES ENVIAR, ETC
   return fetch('//beta.adalab.es/curso-intensivo-fullstack-recursos/apis/netflix-v1/empty.json')
     .then(response => response.json())
@@ -28,7 +40,7 @@ const getMoviesFromApi = () => {
       };
     });
 };
-
+*/
 const objToExport = {
   getMoviesFromApi: getMoviesFromApi
 };
